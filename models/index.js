@@ -1,16 +1,19 @@
-const dbConfig = require("../config.js");
+const dbConfig = require("../config");
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 const db = {};
 db.mongoose = mongoose;
 db.url = dbConfig.url;
-db.organizations = require("./organizations.js")(mongoose);
-db.apps = require("./apps.js")(mongoose);
-db.apporgs = require("./apporgs.js")(mongoose);
+const {Organization} = require("./organizations");
+const {App} = require("./apps");
+const {Apporg} = require("./apporgs");
 
 const esClient = dbConfig.esClient;
 
 module.exports = {
+	Organization,
+	App,
+	Apporg,
 	db,
 	esClient
 };

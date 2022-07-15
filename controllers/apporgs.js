@@ -1,5 +1,4 @@
-const db = require("../models/index.js");
-const Apporg = db.apporgs;
+const {Apporg} = require("../models/index");
 
 exports.create = (req, res) => {
 	// Validate request

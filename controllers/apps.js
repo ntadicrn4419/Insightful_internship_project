@@ -1,5 +1,4 @@
-const db = require("../models/index.js");
-const App = db.apps;
+const {App} = require("../models/index.js");
 
 exports.create = (req, res) => {
 	// Validate request

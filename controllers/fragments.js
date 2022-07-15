@@ -1,5 +1,7 @@
-const db = require("../models/index.js");
-const esClient = db.esClient;
+// const db = require("../models/index.js");
+// const esClient = db.esClient;
+
+const {esClient} = require("../models/index");
 
 exports.create = (req, res) => {
 

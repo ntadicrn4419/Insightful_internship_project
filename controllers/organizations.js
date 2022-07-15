@@ -1,5 +1,4 @@
-const db = require("../models/index.js");
-const Organization = db.organizations;
+const {Organization} = require("../models/index");
 
 exports.create = (req, res) => {
 	// Validate request
@@ -17,6 +16,7 @@ exports.create = (req, res) => {
 		industry: req.body.industry,
 		size: req.body.size
 	});
+
 	// Save Organization in the database
 	organization
 		.save()

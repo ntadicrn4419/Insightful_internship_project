@@ -1,5 +1,5 @@
 module.exports = app => {
-	const apporgs = require("../controllers/apporgs.js");
+	const apporgs = require("../controllers/apporgs");
 	const router = require("express").Router();
 
 	// Create a new Apporg
