@@ -1,0 +1,3 @@
+docker-compose up -d
+
+docker cp ./mongo_init.sh mongoDb:/ && docker exec mongoDb /bin/bash /mongo_init.sh 

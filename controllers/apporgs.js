@@ -1,6 +1,6 @@
 const {Apporg} = require("../models/index");
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
 	// Validate request
 	if (!req.body.id) {
 		res.status(400).send({ message: "Id can not be empty!" });
@@ -31,7 +31,7 @@ exports.create = (req, res) => {
 		return;
 	}
 	// Create an Apporg
-	const apporg = new Apporg({
+	const apporg = await new Apporg({
 		id: req.body.id,
 		name: req.body.name,
 		label: req.body.label,
@@ -41,20 +41,23 @@ exports.create = (req, res) => {
 		organizationId: req.body.organizationId
     
 	});
+	apporg.save();
+	return res.status(201).send({message:"success"});
 	// Save Apporg in the database
-	apporg
-		.save()
-		.then(data => {
-			res.send(data);
-		})
-		.catch(err => {
-			res.status(500).send({
-				message:
-            err.message || "Some error occurred while creating the Apporg."
-			});
-		});
+	// apporg
+	// 	.save()
+	// 	.then(data => {
+	// 		res.send(data);
+	// 	})
+	// 	.catch(err => {
+	// 		res.status(500).send({
+	// 			message:
+	//         err.message || "Some error occurred while creating the Apporg."
+	// 		});
+	// 	});
 };
 
+// eslint-disable-next-line no-unused-vars
 exports.findAll = (req, res) => {
 	Apporg.find()
 		.then(data => {
@@ -63,7 +66,7 @@ exports.findAll = (req, res) => {
 		.catch(err => {
 			res.status(500).send({
 				message:
-            err.message || "Some error occurred while retrieving apporgs."
+			err.message || "Some error occurred while retrieving apps."
 			});
 		});
 };
