@@ -22,6 +22,7 @@ const PORT = process.env.PORT || 8080;
 require("./endpoints/organizations.js")(app);
 require("./endpoints/apps.js")(app);
 require("./endpoints/apporgs.js")(app);
+require("./endpoints/fragments.js")(app);
 
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}.`);
@@ -42,10 +43,10 @@ mongoose.connect(config.url, {}).then(() => {
 });
 
 
-"use strict";
+// "use strict";
 
-const { Client } = require("@elastic/elasticsearch");
-// eslint-disable-next-line no-unused-vars
-const client = new Client({
-	node: "http://localhost:9200"
-});
+// const { Client } = require("@elastic/elasticsearch");
+// // eslint-disable-next-line no-unused-vars
+// const esClient = new Client({
+// 	node: "http://localhost:9200"
+// });
